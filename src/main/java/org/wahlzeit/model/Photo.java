@@ -92,6 +92,12 @@ public class Photo extends DataObject {
 	/**
 	 * 
 	 */
+	protected Location location;
+
+	 /**
+	 * 
+	 */
+
 	public Photo() {
 		id = PhotoId.getNextId();
 		incWriteCount();
