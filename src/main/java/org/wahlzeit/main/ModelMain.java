@@ -31,7 +31,13 @@ public abstract class ModelMain extends AbstractMain {
 		
  		loadGlobals();
 
-		PhotoFactory.initialize();
+		/** 
+		 * 
+		 * This here
+		 * 
+		 * */
+
+		CardPhotoFactory.initialize();
 	}
 	
 	/**
