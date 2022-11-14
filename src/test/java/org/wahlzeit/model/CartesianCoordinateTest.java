@@ -4,13 +4,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class CoordinateTest {
+public class CartesianCoordinateTest {
 
     @Test
     public void testDistance() {
 
-        Coordinate testcoord1 = new Coordinate(1, 1, 1);
-        Coordinate testcoord2 = new Coordinate(0, 0, 0);
+        CartesianCoordinate testcoord1 = new CartesianCoordinate(1, 1, 1);
+        CartesianCoordinate testcoord2 = new CartesianCoordinate(0, 0, 0);
 
         assertEquals(1.7320508075688772, testcoord1.getDistance(testcoord2), 0);
 
@@ -19,10 +19,10 @@ public class CoordinateTest {
     @Test
     public void testEquals() {
 
-        Coordinate testcoord1 = new Coordinate(1, 1, 1);
-        Coordinate testcoord2 = new Coordinate(0, 0, 0);
-        Coordinate testcoord3 = new Coordinate(1, 1, 1);
-        Coordinate testcoord4 = new Coordinate(1, 1, 2);
+        CartesianCoordinate testcoord1 = new CartesianCoordinate(1, 1, 1);
+        CartesianCoordinate testcoord2 = new CartesianCoordinate(0, 0, 0);
+        CartesianCoordinate testcoord3 = new CartesianCoordinate(1, 1, 1);
+        CartesianCoordinate testcoord4 = new CartesianCoordinate(1, 1, 2);
 
         assertEquals(true, testcoord1.isEqual(testcoord1));
         assertEquals(false, testcoord1.isEqual(testcoord2));
