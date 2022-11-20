@@ -5,20 +5,6 @@ import static org.junit.Assert.*;
 
 public class SphericalCoordinateTest {
 
-
-    /* 
-    @Test
-    public void testIsEqual() {
-
-        SphericCoordinate testcoord1 = new SphericCoordinate(5, 60, 30);
-        CartesianCoordinate testcoord2 = testcoord1.asCartesianCoordinate();
-
-        assertEquals(true, testcoord1.isEqual(testcoord2));
-
-    }
-    */
-
-
     @Test
     public void testAsCartesianCoordinate() {
 
@@ -40,16 +26,6 @@ public class SphericalCoordinateTest {
 
     }
 
-    @Test
-    public void testGetCentralAngle() {
-
-        Coordinate testcoord1 = new SphericCoordinate(5, 30, 30);
-        Coordinate testcoord2 = new SphericCoordinate(5, 60, 60);
-
-        assertEquals(1.288563023961239, testcoord1.getCentralAngle(testcoord2), 0.0001);
-
-
-
-    }
+    
     
 }

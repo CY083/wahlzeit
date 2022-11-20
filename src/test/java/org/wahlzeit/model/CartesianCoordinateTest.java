@@ -7,24 +7,25 @@ import static org.junit.Assert.*;
 public class CartesianCoordinateTest {
 
     @Test
-    public void testDistance() {
+    public void testAsSphericCoordinate() {
 
-        CartesianCoordinate testcoord1 = new CartesianCoordinate(1, 1, 1);
-        CartesianCoordinate testcoord2 = new CartesianCoordinate(3, 3, 3);
+        Coordinate testcoord1 = new CartesianCoordinate(1, 1, 1);
+        SphericCoordinate sphericTestCoord = testcoord1.asSphericCoordinate();
 
-        assertEquals(3.4641016151377544, testcoord1.getDistance(testcoord2), 0.0001);
-
-        assertEquals(3.4641016151377544, testcoord1.asSphericCoordinate().getCartesianDistance(testcoord2.asSphericCoordinate()), 0.0001);
-
+        assertEquals(1.7320508075689, sphericTestCoord.getRho(), 0.0001);
+        assertEquals(0.95531661812451, sphericTestCoord.getTheta(), 0.0001);
+        assertEquals(0.78539816339745, sphericTestCoord.getPhi(), 0.0001);
     }
+
+    
 
     @Test
     public void testEquals() {
 
-        CartesianCoordinate testcoord1 = new CartesianCoordinate(1, 1, 1);
-        CartesianCoordinate testcoord2 = new CartesianCoordinate(0, 0, 0);
-        CartesianCoordinate testcoord3 = new CartesianCoordinate(1, 1, 1);
-        CartesianCoordinate testcoord4 = new CartesianCoordinate(1, 1, 2);
+        Coordinate testcoord1 = new CartesianCoordinate(1, 1, 1);
+        Coordinate testcoord2 = new CartesianCoordinate(0, 0, 0);
+        Coordinate testcoord3 = new CartesianCoordinate(1, 1, 1);
+        Coordinate testcoord4 = new CartesianCoordinate(1, 1, 2);
 
         assertEquals(true, testcoord1.isEqual(testcoord1));
         assertEquals(false, testcoord1.isEqual(testcoord2));
