@@ -12,5 +12,7 @@ public interface Coordinate {
 
     boolean isEqual(Coordinate coordinate);
 
+    boolean assertClassInvariants();
+
     }
 

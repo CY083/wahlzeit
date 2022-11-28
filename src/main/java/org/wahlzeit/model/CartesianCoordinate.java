@@ -36,15 +36,37 @@ public class CartesianCoordinate extends AbstractCoordinate {
         this.z = z;
     }
 
+    @Override
+    public boolean assertClassInvariants() {
+
+        if (Double.isNaN(x) || Double.isNaN(y) || Double.isNaN(z)) {
+
+            return false;
+
+        }
+
+        if (Double.isInfinite(x) || Double.isInfinite(y) || Double.isInfinite(z)) {
+
+            return false;
+
+        }
+
+        return true;
+    }
+
 
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
+
+        assert assertClassInvariants();
         
         return this;
     }
 
     @Override
     public SphericCoordinate asSphericCoordinate() {
+
+        assertClassInvariants();
 
         double rho;
         double theta;
@@ -55,6 +77,8 @@ public class CartesianCoordinate extends AbstractCoordinate {
         phi = Math.atan(this.getY() / this.getX());
 
         SphericCoordinate sphericCoord = new SphericCoordinate(rho, theta, phi);
+
+        assert sphericCoord.assertClassInvariants();
 
         return sphericCoord;
     }

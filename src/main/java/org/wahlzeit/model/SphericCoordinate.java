@@ -37,8 +37,23 @@ public class SphericCoordinate extends AbstractCoordinate {
 
     }
 
+
+    @Override
+    public boolean assertClassInvariants() {
+
+        if (rho <= 0 || theta < 0 || theta > Math.PI || phi < -Math.PI || phi > Math.PI) {
+
+            return false;
+        }
+
+        return true;
+    }
+
+
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
+
+        assert assertClassInvariants();
 
         double x;
         double y;
@@ -50,12 +65,16 @@ public class SphericCoordinate extends AbstractCoordinate {
 
         CartesianCoordinate cartesianCoord = new CartesianCoordinate(x, y, z);
 
+        assert cartesianCoord.assertClassInvariants();
+
         return cartesianCoord;
 
     }
 
     @Override
     public SphericCoordinate asSphericCoordinate() {
+
+        assert assertClassInvariants();
         
         return this;
     }

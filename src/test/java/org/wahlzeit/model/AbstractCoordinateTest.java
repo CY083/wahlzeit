@@ -25,10 +25,10 @@ public class AbstractCoordinateTest {
     @Test
     public void testGetCentralAngle() {
 
-        Coordinate testcoord1 = new SphericCoordinate(5, 30, 30);
-        Coordinate testcoord2 = new SphericCoordinate(5, 60, 60);
+        Coordinate testcoord1 = new SphericCoordinate(5, Math.toRadians(30), Math.toRadians(30));
+        Coordinate testcoord2 = new SphericCoordinate(5, Math.toRadians(60), Math.toRadians(60));
 
-        assertEquals(1.288563023961239, testcoord1.getCentralAngle(testcoord2), 0.0001);
+        assertEquals(0.6300251316243757, testcoord1.getCentralAngle(testcoord2), 0.0001);
 
         Coordinate testcoord3 = new CartesianCoordinate(1, 0, 0);
         Coordinate testcoord4 = new CartesianCoordinate(0, 1, 0);
