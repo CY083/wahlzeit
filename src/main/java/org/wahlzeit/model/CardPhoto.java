@@ -7,13 +7,16 @@ public class CardPhoto extends Photo {
 
     
 
-    public CardPhoto(ResultSet rset) throws SQLException {
+    public CardPhoto(ResultSet rset) throws SQLException, NullPointerException {
         super(rset);
+
+        if (rset == null) throw new NullPointerException("Resultset is null.");
         
     }
 
     public CardPhoto() {
         super();
+
     }
 
     public CardPhoto(PhotoId myId) {

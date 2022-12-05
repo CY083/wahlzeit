@@ -4,17 +4,37 @@ public abstract class AbstractCoordinate implements Coordinate{
 
     public static final double EPSILON = 0.0001;
 
+
+    public void assertIsNotNull(Coordinate coord) throws NullPointerException{
+
+
+        if (coord == null) throw new NullPointerException("Coordinate is null.");
+    
+    
+    }
+
+    public void assertIsNumber(double number) throws IllegalArgumentException {
+
+        if (!Double.isFinite(number)) throw new IllegalArgumentException("Argument is not a number or infinite.");
+
+    }
+
+
+
     @Override
     public double getCartesianDistance(Coordinate coordinate) {
 
-        assert assertClassInvariants();
+        assertClassInvariants();
+        assertIsNotNull(coordinate);
 
         CartesianCoordinate cartCoord = this.asCartesianCoordinate();
         CartesianCoordinate otherCartCoord = coordinate.asCartesianCoordinate();
 
         double distance = doGetCartesianDistance(cartCoord, otherCartCoord);
 
-        assert assertClassInvariants();
+
+        assertIsNumber(distance);
+        assertClassInvariants();
 
         return distance;
 
@@ -36,7 +56,8 @@ public abstract class AbstractCoordinate implements Coordinate{
     @Override
     public double getCentralAngle(Coordinate coordinate) {
 
-        assert assertClassInvariants();
+        assertClassInvariants();
+        assertIsNotNull(coordinate);
         
 
         SphericCoordinate sphericCoord = this.asSphericCoordinate();
@@ -44,8 +65,8 @@ public abstract class AbstractCoordinate implements Coordinate{
 
         double centralAngle = doGetCentralAngle(sphericCoord, otherSphericCoord);
 
-        
-        assert assertClassInvariants();
+        assertIsNumber(centralAngle);
+        assertClassInvariants();
 
         return centralAngle;
 
@@ -71,6 +92,8 @@ public abstract class AbstractCoordinate implements Coordinate{
 
     public boolean isEqual(Coordinate coordinate) {
 
+        assertIsNotNull(this);
+        assertIsNotNull(coordinate);
 
         CartesianCoordinate cartCoord = this.asCartesianCoordinate();
         CartesianCoordinate otherCartCoord = coordinate.asCartesianCoordinate();

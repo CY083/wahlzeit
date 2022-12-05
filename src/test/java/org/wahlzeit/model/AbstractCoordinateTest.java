@@ -3,6 +3,7 @@ package org.wahlzeit.model;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+
 public class AbstractCoordinateTest {
 
     @Test
@@ -61,5 +62,29 @@ public class AbstractCoordinateTest {
     }
 
 
-    
+    @Test(expected = NullPointerException.class)
+    public void testNullPointerException() {
+
+        Coordinate testcoord4 = new CartesianCoordinate(0, 1, 0);
+        Coordinate testcoord5 = null;
+
+        testcoord4.getCentralAngle(testcoord5);
+       
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIllegalArgument() {
+
+        CartesianCoordinate testcoord4 = new CartesianCoordinate(0, 1, 0);
+        
+        testcoord4.setX(Double.NaN);
+
+        testcoord4.asSphericCoordinate();
+
+
+    }
+
 }
+
+    
+

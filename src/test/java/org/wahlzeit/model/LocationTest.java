@@ -5,7 +5,7 @@ import org.junit.Test;
 public class LocationTest {
 
     @Test(expected = IllegalArgumentException.class)
-    public void testLocationExeption() {
+    public void testLocationException() {
 
         Location testlocation = new Location(null);
        

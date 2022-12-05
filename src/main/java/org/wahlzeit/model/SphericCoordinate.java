@@ -39,21 +39,20 @@ public class SphericCoordinate extends AbstractCoordinate {
 
 
     @Override
-    public boolean assertClassInvariants() {
+    public void assertClassInvariants() throws IllegalArgumentException {
 
         if (rho <= 0 || theta < 0 || theta > Math.PI || phi < -Math.PI || phi > Math.PI) {
 
-            return false;
+            throw new IllegalArgumentException("Radius must be positive number. Theta must be between 0 and Pi. Phi must be between .Pi and Pi.");
         }
 
-        return true;
     }
 
 
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
 
-        assert assertClassInvariants();
+        assertClassInvariants();
 
         double x;
         double y;
@@ -65,7 +64,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 
         CartesianCoordinate cartesianCoord = new CartesianCoordinate(x, y, z);
 
-        assert cartesianCoord.assertClassInvariants();
+        cartesianCoord.assertClassInvariants();
 
         return cartesianCoord;
 
@@ -74,7 +73,7 @@ public class SphericCoordinate extends AbstractCoordinate {
     @Override
     public SphericCoordinate asSphericCoordinate() {
 
-        assert assertClassInvariants();
+        assertClassInvariants();
         
         return this;
     }

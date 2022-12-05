@@ -13,11 +13,15 @@ public class CardPhotoManager extends PhotoManager {
         super();
     }
     
-    protected CardPhoto createObject(ResultSet rset) throws SQLException {
+    protected CardPhoto createObject(ResultSet rset) throws SQLException, NullPointerException {
+
+		if (rset == null) throw new NullPointerException("Resultset is null.");
 		return CardPhotoFactory.getInstance().createCardPhoto(rset);
 	}
 
-    public CardPhoto createCardPhoto(File file) throws Exception {
+    public CardPhoto createCardPhoto(File file) throws Exception, NullPointerException {
+
+		if (file == null) throw new NullPointerException("Resultset is null.");
 		PhotoId id = PhotoId.getNextId();
 		CardPhoto result = (CardPhoto) PhotoUtil.createPhoto(file, id);
 		addPhoto(result);

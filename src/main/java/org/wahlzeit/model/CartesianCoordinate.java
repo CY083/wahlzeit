@@ -37,28 +37,26 @@ public class CartesianCoordinate extends AbstractCoordinate {
     }
 
     @Override
-    public boolean assertClassInvariants() {
+    public void assertClassInvariants() throws IllegalArgumentException{
 
         if (Double.isNaN(x) || Double.isNaN(y) || Double.isNaN(z)) {
 
-            return false;
+            throw new IllegalArgumentException("At least one value is not a number.");
 
         }
 
         if (Double.isInfinite(x) || Double.isInfinite(y) || Double.isInfinite(z)) {
 
-            return false;
-
+            throw new IllegalArgumentException("At least on value is infinite.");
         }
 
-        return true;
     }
 
 
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
 
-        assert assertClassInvariants();
+        assertClassInvariants();
         
         return this;
     }
@@ -78,7 +76,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
         SphericCoordinate sphericCoord = new SphericCoordinate(rho, theta, phi);
 
-        assert sphericCoord.assertClassInvariants();
+        sphericCoord.assertClassInvariants();
 
         return sphericCoord;
     }

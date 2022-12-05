@@ -37,31 +37,30 @@ public class CardPhotoFactory extends PhotoFactory{
 
     
     public CardPhoto createCardPhoto() {
-        // TODO Auto-generated method stub
         return new CardPhoto();
     }
 
     
-    public CardPhoto createCardPhoto(PhotoId id) {
-        // TODO Auto-generated method stub
+    public CardPhoto createCardPhoto(PhotoId id) throws IllegalArgumentException {
+
+        if (id == null) throw new NullPointerException("Resultset is null.");
         return new CardPhoto(id);
     }
 
     
-    public CardPhoto createCardPhoto(ResultSet rset) throws SQLException {
-        // TODO Auto-generated method stub
+    public CardPhoto createCardPhoto(ResultSet rset) throws SQLException, NullPointerException {
+
+        if (rset == null) throw new NullPointerException("Resultset is null.");
         return new CardPhoto(rset);
     }
 
     
     public PhotoFilter createPhotoFilter() {
-        // TODO Auto-generated method stub
         return new PhotoFilter();
     }
 
     
     public PhotoTagCollector createPhotoTagCollector() {
-        // TODO Auto-generated method stub
         return new PhotoTagCollector();
     }
     
