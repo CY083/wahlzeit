@@ -1,39 +1,68 @@
 package org.wahlzeit.model;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class CartesianCoordinate extends AbstractCoordinate {
 
-    private double x;
-    private double y;
-    private double z;
+    private final double x;
+    private final double y;
+    private final double z;
 
-    public CartesianCoordinate(double x, double y, double z) {
+    protected static HashMap<Integer, CartesianCoordinate> hm = new HashMap<Integer, CartesianCoordinate>();
+
+    private CartesianCoordinate(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;
-}
-
-    public double getX() {
-        return x;
     }
 
-    public void setX(double x) {
-        this.x = x;
+    public double getX() {
+
+        return x;
+
     }
 
     public double getY() {
-        return y;
-    }
 
-    public void setY(double y) {
-        this.y = y;
+        return y;
+
     }
 
     public double getZ() {
+
         return z;
+
     }
 
-    public void setZ(double z) {
-        this.z = z;
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(x, y, z);
+
+    }
+
+    private static int hashCode(double x, double y, double z) {
+
+        return Objects.hash(x, y, z);
+        
+    }
+
+    public static CartesianCoordinate getOrCreateCartesianCoordinate(double x, double y, double z) {
+
+        int key = hashCode(x, y, z);
+
+        CartesianCoordinate cartCoord = hm.get(key);
+
+        if (cartCoord == null) {
+
+            cartCoord = new CartesianCoordinate(x, y, z);
+
+            hm.put(key, cartCoord);
+
+        }
+
+        return cartCoord;
+
     }
 
     @Override
@@ -74,7 +103,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
         theta = Math.acos(this.getZ() / rho);
         phi = Math.atan(this.getY() / this.getX());
 
-        SphericCoordinate sphericCoord = new SphericCoordinate(rho, theta, phi);
+        SphericCoordinate sphericCoord = SphericCoordinate.getOrCreateSphericCoordinate(rho, theta, phi);
 
         sphericCoord.assertClassInvariants();
 

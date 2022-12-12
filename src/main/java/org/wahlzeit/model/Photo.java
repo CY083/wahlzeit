@@ -92,7 +92,7 @@ public class Photo extends DataObject {
 	/**
 	 * 
 	 */
-	protected Location location = new Location(new CartesianCoordinate(0,0,0));
+	protected Location location = new Location(CartesianCoordinate.getOrCreateCartesianCoordinate(0,0,0));
 	protected double xcoord;
 	protected double ycoord;
 	protected double zcoord;

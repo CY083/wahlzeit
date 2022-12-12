@@ -85,8 +85,6 @@ public abstract class AbstractCoordinate implements Coordinate{
 
         return centralAngle;
 
-
-
     }
 
 
@@ -124,9 +122,11 @@ public abstract class AbstractCoordinate implements Coordinate{
     @Override
     public boolean equals(Object object) {
 
-        if (object == this) {
 
-            return true;
+
+        if ((object == null) || !( object instanceof Coordinate)) {
+
+            return false;
 
         }
 
@@ -135,5 +135,7 @@ public abstract class AbstractCoordinate implements Coordinate{
         return isEqual(coordinate);
 
     }
+
+    
 
 }

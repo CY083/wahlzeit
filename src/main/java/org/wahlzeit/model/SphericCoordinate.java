@@ -1,41 +1,68 @@
 package org.wahlzeit.model;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class SphericCoordinate extends AbstractCoordinate {
 
-    private double rho;
-    private double theta;
-    private double phi;
+    private final double rho;
+    private final double theta;
+    private final double phi;
+
+    protected static HashMap<Integer, SphericCoordinate> hm = new HashMap<Integer, SphericCoordinate>();
     
+    private SphericCoordinate(double rho, double theta, double phi) {
+        this.rho = rho;
+        this.theta = theta;
+        this.phi = phi;
+
+    }
+
     public double getRho() {
+
         return rho;
     }
 
-    public void setRho(double rho) {
-        this.rho = rho;
-    }
-
     public double getTheta() {
+
         return theta;
     }
 
-    public void setTheta(double theta) {
-        this.theta = theta;
-    }
-
     public double getPhi() {
+
         return phi;
     }
 
-    public void setPhi(double phi) {
-        this.phi = phi;
-    }
+    @Override
+    public int hashCode() {
 
-    public SphericCoordinate(double rho, double theta, double phi) {
-        this.rho = rho;
-        this.theta = theta;
-        this.phi = phi;
+        return Objects.hash(rho, theta, phi);
 
     }
+
+    private static int hashCode(double rho, double theta, double phi) {
+        
+        return Objects.hash(rho, theta, phi);
+        
+    }
+
+    public static SphericCoordinate getOrCreateSphericCoordinate(double rho, double theta, double phi) {
+
+        int key = hashCode(rho, theta, phi);
+
+        SphericCoordinate sphericCoord = hm.get(key);
+
+        if (sphericCoord == null) {
+
+            sphericCoord = new SphericCoordinate(rho, theta, phi);
+
+            hm.put(key, sphericCoord);
+
+        }
+
+        return sphericCoord;
+
+    }
+
 
 
     @Override
@@ -62,7 +89,7 @@ public class SphericCoordinate extends AbstractCoordinate {
         y = this.rho * Math.sin(this.theta) * Math.sin(this.phi);
         z = this.rho * Math.cos(this.theta);
 
-        CartesianCoordinate cartesianCoord = new CartesianCoordinate(x, y, z);
+        CartesianCoordinate cartesianCoord = CartesianCoordinate.getOrCreateCartesianCoordinate(x, y, z);
 
         cartesianCoord.assertClassInvariants();
 
