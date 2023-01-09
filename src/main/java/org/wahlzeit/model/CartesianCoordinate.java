@@ -2,6 +2,13 @@ package org.wahlzeit.model;
 import java.util.HashMap;
 import java.util.Objects;
 
+
+@PatternInstance(
+    patternName = "Value Object",
+    participants = {
+        "CartesianCoordinate"
+    }
+)
 public class CartesianCoordinate extends AbstractCoordinate {
 
     private final double x;
