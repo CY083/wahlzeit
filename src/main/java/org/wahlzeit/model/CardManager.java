@@ -33,7 +33,7 @@ public class CardManager {
 
         CardType ct = getCardType(typeName);
 
-        Card result = ct.createInstance();
+        Card result = ct.createInstance(cardName);
 
         cards.put(result.getCardName(), result);
 

@@ -6,11 +6,6 @@ public class Card {
     private Location location;
     private String cardName;
 
-    public Card(CardType ct) {
-
-        this.cardType = ct;
-    }
-
     public Card(CardType ct, String name) {
 
         this.cardType = ct;

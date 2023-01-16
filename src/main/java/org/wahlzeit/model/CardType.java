@@ -56,9 +56,9 @@ public class CardType {
 
     }
 
-    public Card createInstance() {
+    public Card createInstance(String cardName) {
 
-        return new Card(this);
+        return new Card(this, cardName);
         
     }
     
