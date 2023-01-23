@@ -20,6 +20,7 @@ public class CardPhotoFactory extends PhotoFactory{
     private static CardPhotoFactory instance = null;
 
 
+    //** Photo-Sequence 01b: */
     public static synchronized CardPhotoFactory getInstance() {
 		if (instance == null) {
 			SysLog.logSysInfo("setting generic CardPhotoFactory");
@@ -29,6 +30,7 @@ public class CardPhotoFactory extends PhotoFactory{
 		return instance;
 	}
 
+    //** Photo-Sequence 01c: */
     protected static synchronized void setInstance(CardPhotoFactory cardPhotoFactory) {
 		if (instance != null) {
 			throw new IllegalStateException("attempt to initialize PhotoFactory twice");
@@ -41,19 +43,20 @@ public class CardPhotoFactory extends PhotoFactory{
 		getInstance(); // drops result due to getInstance() side-effects
 	}
 
-    
+    //** Photo-Sequence 03: */
     public CardPhoto createCardPhoto() {
         return new CardPhoto();
     }
 
     
+    //** Photo-Sequence 03: */
     public CardPhoto createCardPhoto(PhotoId id) throws IllegalArgumentException {
 
         if (id == null) throw new NullPointerException("Resultset is null.");
         return new CardPhoto(id);
     }
 
-    
+    //** Photo-Sequence 03: */
     public CardPhoto createCardPhoto(ResultSet rset) throws SQLException, NullPointerException {
 
         if (rset == null) throw new NullPointerException("Resultset is null.");

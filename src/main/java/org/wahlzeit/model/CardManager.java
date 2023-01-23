@@ -9,6 +9,8 @@ public class CardManager {
     private HashMap<String, Card> cards = new HashMap<>();
     private HashMap<String, CardType> cardTypes = new HashMap<>();
 
+
+    //** Domain-Sequence 01b: */
     public static synchronized CardManager getInstance() {
 		if (instance == null) {
 			setInstance(new CardManager());
@@ -17,6 +19,7 @@ public class CardManager {
 		return instance;
 	}
 	
+    //** Domain-Sequence 01c: */
 	protected static synchronized void setInstance(CardManager cardManager) {
 		if (instance != null) {
 			throw new IllegalStateException("attempt to initialize CardManager twice");
@@ -25,10 +28,12 @@ public class CardManager {
 		instance = cardManager;
 	}
 	
+    //** Domain-Sequence 01a: */
 	public static void initialize() {
 		getInstance(); 
 	}
 
+    //** Domain-Sequence 02a: */
     public Card createCard(String cardName, String typeName) {
 
         CardType ct = getCardType(typeName);

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public class CardPhotoManager extends PhotoManager {
 
+	//** Photo-Sequence 02: */
     protected final CardPhotoManager instance = new CardPhotoManager();
 
 
@@ -13,6 +14,7 @@ public class CardPhotoManager extends PhotoManager {
         super();
     }
     
+	//** Photo-Sequence 03a: */
     protected CardPhoto createObject(ResultSet rset) throws SQLException, NullPointerException {
 
 		if (rset == null) throw new NullPointerException("Resultset is null.");

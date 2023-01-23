@@ -18,9 +18,7 @@ import org.wahlzeit.services.*;
  */
 public class PhotoUtil {
 	
-	/**
-	 * 
-	 */
+	//** Photo-Sequence 03: */
 	public static Photo createPhoto(File source, PhotoId id) throws Exception {
 		Photo result = PhotoFactory.getInstance().createPhoto(id);
 		

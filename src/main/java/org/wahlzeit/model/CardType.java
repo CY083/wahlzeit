@@ -29,7 +29,7 @@ public class CardType {
     public void addSubType(CardType ct) {
         assert (ct != null) : "tried to set null subtype";
         ct.setSuperType(this);
-        subTypes.add(ct);
+        this.subTypes.add(ct);
     }
 
     public boolean isSubType() {
@@ -56,6 +56,7 @@ public class CardType {
 
     }
 
+    //** Domain-Sequence 02b: */
     public Card createInstance(String cardName) {
 
         return new Card(this, cardName);

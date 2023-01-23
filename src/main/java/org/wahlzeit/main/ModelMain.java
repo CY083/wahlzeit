@@ -18,9 +18,7 @@ import org.wahlzeit.servlets.AbstractServlet;
  */
 public abstract class ModelMain extends AbstractMain {
 	
-	/**
-	 * 
-	 */
+	//** Photo-Sequence 01a: */
 	protected void startUp(String rootDir) throws Exception {
 		super.startUp(rootDir);
 
