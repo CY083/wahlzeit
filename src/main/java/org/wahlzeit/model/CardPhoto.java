@@ -3,6 +3,12 @@ package org.wahlzeit.model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * CardPhoto / Card Collaboration
+ * Provides main domain functionality
+ * Role types: CardPhoto (Client), Card (Service) 
+ */
+
 public class CardPhoto extends Photo {
 
     protected Card card;

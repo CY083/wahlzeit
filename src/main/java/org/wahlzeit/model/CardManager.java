@@ -2,6 +2,12 @@ package org.wahlzeit.model;
 
 import java.util.HashMap;
 
+/** 
+ * CardManager / Card Collaboration (Manager)
+ * Centralizes object management in one place
+ * Role types: Client, CardManager (Manager), Card (Element) 
+ */
+
 public class CardManager {
 
     private static CardManager instance = null;
